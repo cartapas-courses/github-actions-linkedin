@@ -4,18 +4,18 @@ on: push
 
 jobs:
     job1:
-        name: First job
+        name: "First job"
 	runs-on: ubuntu-latest
 	steps:
-	- name: Step one
+	- name: "Step one"
 	  uses: actions/checkout@v2
-	- name: Step two
+	- name: "Step two"
 	  run: env | sort
     job2:
-	name: Second job
+	name: "Second job"
 	runs-on: windows-latest
 	steps:
-	- name: Step one
+	- name: "Step one"
 	  uses: actions/checkout@v2
-	- name: Step two
+	- name: "Step two"
 	  run: "Get-ChildItem Env: | Sort-Object Name"
