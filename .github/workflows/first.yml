@@ -4,7 +4,7 @@ on: push
 
 jobs:
     job1:
-        name: First job
+        name: "First job"
 	runs-on: ubuntu-latest
 	steps:
 	    - name: Step one
