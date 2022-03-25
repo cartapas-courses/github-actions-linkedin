@@ -1,0 +1,19 @@
+name: artifact
+env:
+  ARTIFACT_NAME: 'file1'
+on: push
+jobs:
+  job1:
+    name: "Artifact"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Check code"
+        uses: actions/checkout@v2
+        run: |
+          mkdir /tmp/${{ env.ARTIFACT_NAME }}
+          ls -lh / > /tmp/${{ env.ARTIFACT_NAME }}
+      - name: "Upload artifact"
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: /tmp/${{ env.ARTIFACT_NAME }}
