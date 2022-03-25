@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: "Check code"
         uses: actions/checkout@v2
-        run: |
+      - run: |
           mkdir /tmp/${{ env.ARTIFACT_NAME }}
           ls -lh / > /tmp/${{ env.ARTIFACT_NAME }}
       - name: "Upload artifact"
