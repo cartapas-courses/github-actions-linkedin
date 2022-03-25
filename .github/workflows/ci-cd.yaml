@@ -15,6 +15,7 @@ jobs:
         run: python ${{ env.ARTIFACT_NAME }}
 
   build:
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - name: "Check out repo"
