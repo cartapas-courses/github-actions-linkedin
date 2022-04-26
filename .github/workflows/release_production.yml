@@ -5,7 +5,7 @@ on:
     types:
       - closed
     branches:
-      - production
+      - main
       
 jobs:
   if_merged:
@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo The PR to ${{ github.ref }} was merged
+        echo The PR to PRODUCTION was merged
