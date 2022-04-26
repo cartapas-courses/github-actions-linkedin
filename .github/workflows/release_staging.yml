@@ -1,0 +1,16 @@
+name: Release to STG
+
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - staging
+      
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo The PR to ${{ github.ref }} was merged
