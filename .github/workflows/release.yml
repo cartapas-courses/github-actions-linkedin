@@ -7,7 +7,7 @@ on:
     branches-ignore:
       - development
       - staging
-      - production
+      - main
       
 jobs:
   if_merged:
@@ -15,4 +15,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo The PR was merged
+        echo The PR to ${{ github.ref }} was merged
