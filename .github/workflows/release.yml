@@ -4,6 +4,10 @@ on:
   pull_request:
     types:
       - closed
+    branches-ignore:
+      - development
+      - staging
+      - production
       
 jobs:
   if_merged:
