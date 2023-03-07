@@ -20,12 +20,10 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const context = github.context;
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
+            const { owner, repo } = context.repo;
             const pulls = await github.pulls.list({
-              owner: owner,
-              repo: repo,
+              owner,
+              repo,
               state: 'closed',
               base: 'master',
               per_page: 10
