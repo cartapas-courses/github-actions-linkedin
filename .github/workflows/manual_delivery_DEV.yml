@@ -21,8 +21,9 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { owner, repo } = context.repo;
-            const github = require('@actions/github');
-            const pulls = await github.pulls.list({
+            const { getOctokit} = require('@actions/github');
+            const octokit = getOctokit(githubToken);
+            const pulls = await octokit.pulls.list({
               owner,
               repo,
               state: 'closed',
