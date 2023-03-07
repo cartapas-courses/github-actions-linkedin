@@ -1,0 +1,52 @@
+name: Manual Build and Deploy - DEV (2023)
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_commit_id:
+        description: 'Enter the seven digit commit ID of the closed pull request in the develop branch'
+        required: true
+
+jobs:
+  get-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get a list of closed pull requests
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const { data: pulls } = await github.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'closed',
+              base: main,
+              per_page: 10,
+              page: 1,
+            });
+            const options = pulls.map((pull) => {
+              return {
+                label: `${pull.title} (#${pull.number})`,
+                value: pull.head.sha.slice(0, 7),
+              };
+            });
+            console.log(JSON.stringify(options));
+      - name: Select pull request
+        id: select-pr
+        uses: andstor/select-input-action@v1.2.0
+        with:
+          prompt: 'Select the closed pull request to build and deploy'
+          options: ${{ steps.get-pr.outputs.result}}
+  
+  build:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: build-and-deploy-${{ github.ref }}-2023
+      cancel-in-progress: true
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Build
+      run: |
+        echo "Commit ID selected ${{ needs.get-pr.outputs.selected }}"
+        echo "Manual commit ID ${{ inputs.pr_commit_id }}"
