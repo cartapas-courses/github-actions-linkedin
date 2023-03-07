@@ -30,8 +30,7 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
             const { getOctokit} = require('@actions/github');
-            const githubToken = process.env.GITHUB_TOKEN;
-            const octokit = getOctokit(githubToken);
+            const octokit = getOctokit(process.env.github-token);
             const pulls = await octokit.pulls.list({
               owner,
               repo,
