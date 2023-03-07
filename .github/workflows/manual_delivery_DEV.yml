@@ -21,6 +21,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { owner, repo } = context.repo;
+            const github = require('@actions/github');
             const pulls = await github.pulls.list({
               owner,
               repo,
@@ -33,3 +34,4 @@ jobs:
       - name: Print Pull Requests
         run: |
           echo "${{ steps.get_pull_requests.outputs.result }}"
+          echo "Manual commit ID ${{ inputs.pr_commit_id }}"
