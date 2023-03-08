@@ -30,6 +30,13 @@ jobs:
     #- name: Login to Amazon ECR
     #  uses: aws-actions/amazon-ecr-login@v1.5.3
 
+    - name: Set variables to share with another workflows
+      run: |
+        echo "export MY_BRANCH=$GITHUB_REF_NAME" >> $GITHUB_ENV
+        COMMIT_ID=${GITHUB_SHA}
+        COMMIT_ID_SHORT=${COMMIT_ID:0:7}
+        export MY_COMMIT_ID=${COMMIT_ID_SHORT} 
+
     - name: Building and pushing the Docker image
       run: |
         .bin/build_2023.sh $GITHUB_REF_NAME $GITHUB_SHA
