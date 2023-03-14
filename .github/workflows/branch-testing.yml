@@ -17,8 +17,6 @@ jobs:
       run: |
         echo "MY_VAR=Salida" >> $GITHUB_ENV
 
-    - name: Display output variable in Workflow Summary
+    - name: Display output variable using Job Summary
       run: |
-        echo ${{ env.MY_VAR }} >> $GITHUB_WORKSPACE/results.txt
-        echo "Output file contents:"
-        cat $GITHUB_WORKSPACE/results.txt
+        echo "### ${{ env.MY_VAR }} :rocket:" >> $GITHUB_STEP_SUMMARY
