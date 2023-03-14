@@ -12,6 +12,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3 
 
-    - name: Output variables
+    - name: Set output variables
+      id: first-job-step-2
       run: |
-        echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
+        echo "::set-output name=my_var::my_value"
+
+    - name: Display output variable in Workflow Summary
+      run: |
+        echo "my_var=${{ steps.first-job-step-2.outputs.my_var }}" >> $GITHUB_ENV
