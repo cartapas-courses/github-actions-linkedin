@@ -15,7 +15,7 @@ jobs:
     - name: Set output variables
       id: first-job-step-2
       run: |
-        echo "::set-output name=my_var::my_value"
+        echo "::set-output name=my_var::Salida"
 
     - name: Display output variable in Workflow Summary
       run: |
