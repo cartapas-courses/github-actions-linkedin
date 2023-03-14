@@ -20,8 +20,7 @@ jobs:
     - name: Bash script
       run: |
         .bin/build_2023.sh $GITHUB_REF_NAME $GITHUB_SHA
-      env:
-        ENVIRONMENT: $environment"
+        echo "ENVIRONMENT=$environment" >> $GITHUB_ENV
 
     - name: Display output variable using Job Summary
       run: |
