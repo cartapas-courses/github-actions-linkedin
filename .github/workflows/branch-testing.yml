@@ -10,12 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3 
-
-    - name: Set output variables
-      id: first-job-step-2
-      run: |
-        echo "MY_VAR=Salida" >> $GITHUB_ENV
+      uses: actions/checkout@v3
 
     - name: Bash script
       run: |
@@ -24,7 +19,23 @@ jobs:
     - name: Display output variable using Job Summary
       run: |
         echo "### Outputs :rocket:" >> $GITHUB_STEP_SUMMARY
+        echo "Environment: ${{ env.BUILD_ENV_ENVIRONMENT }}" >> $GITHUB_STEP_SUMMARY
+        echo "short commit IDt: ${{ env.BUILD_ENV_COMMIT_ID_SHORT }}" >> $GITHUB_STEP_SUMMARY
+
+  second:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Bash script
+      run: |
+        .bin/deploy_2023.sh $GITHUB_REF_NAME $GITHUB_SHA
+
+    - name: Display output variable using Job Summary
+      run: |
+        echo "### Outputs :rocket:" >> $GITHUB_STEP_SUMMARY
         echo "Branch: $GITHUB_REF_NAME" >> $GITHUB_STEP_SUMMARY
         echo "Commit ID: ${GITHUB_SHA:0:7}" >> $GITHUB_STEP_SUMMARY
         echo "Environment: ${{ env.BUILD_ENV_ENVIRONMENT }}" >> $GITHUB_STEP_SUMMARY
-        echo "Environment: ${{ env.BUILD_ENV_URI }}" >> $GITHUB_STEP_SUMMARY
+        echo "Docker URI: ${{ env.BUILD_ENV_URI }}" >> $GITHUB_STEP_SUMMARY

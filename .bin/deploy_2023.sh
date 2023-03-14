@@ -22,6 +22,10 @@ function main() {
 	echo "Branch: $environment"
 	echo "Commit: $commit_id_short"
 
+	#Setting output variables
+	echo "BUILD_ENV_ENVIRONMENT=$environment" >> $GITHUB_ENV
+	echo "BUILD_ENV_COMMIT_ID_SHORT=$commit_id_short" >> $GITHUB_ENV
+
 }
 
 main "$@"
