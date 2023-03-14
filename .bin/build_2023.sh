@@ -39,7 +39,7 @@ function main() {
 		DOCKER_IMAGE_URI=172259620592.dkr.ecr.us-east-1.amazonaws.com/www:feature.${commit_id_short}
 	fi
 
-	echo $environment >> $GITHUB_ENV
+	echo "BUILD_ENV_ENVIRONMENT=$environment" >> $GITHUB_ENV
 
 }
 
