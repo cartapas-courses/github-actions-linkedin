@@ -17,6 +17,13 @@ jobs:
       run: |
         echo "MY_VAR=Salida" >> $GITHUB_ENV
 
+    - name: Bash script
+      run: |
+        ./build_2023.sh $GITHUB_REF_NAME $GITHUB_SHA
+
     - name: Display output variable using Job Summary
       run: |
-        echo "### ${{ env.MY_VAR }} :rocket:" >> $GITHUB_STEP_SUMMARY
+        echo "### Outputs :rocket:" >> $GITHUB_STEP_SUMMARY
+        echo "Branch: $GITHUB_REF_NAME"
+        echo "Commit ID: $GITHUB_SHA | cut -c 1-7"
+        echo "Environment: $environment"
