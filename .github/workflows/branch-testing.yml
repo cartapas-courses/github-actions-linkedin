@@ -20,3 +20,4 @@ jobs:
     - name: Display output variable in Workflow Summary
       run: |
         echo "my_var=${{ steps.first-job-step-2.outputs.my_var }}" >> $GITHUB_ENV
+        echo $GITHUB_ENV
