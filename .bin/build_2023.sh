@@ -39,7 +39,9 @@ function main() {
 		DOCKER_IMAGE_URI=172259620592.dkr.ecr.us-east-1.amazonaws.com/www:feature.${commit_id_short}
 	fi
 
+	#Setting output variables
 	echo "BUILD_ENV_ENVIRONMENT=$environment" >> $GITHUB_ENV
+	echo "BUILD_ENV_URI=https://$DOCKER_IMAGE_URI" >> $GITHUB_ENV
 
 }
 
