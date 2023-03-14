@@ -19,7 +19,7 @@ function main() {
 
 	commit_id_short=${commit_id::7}
 
-	echo "Branch: $environment"
+	echo "Branch: $branch"
 	echo "Commit: $commit_id_short"
 
 	if [ "$branch" == "develop" ]
