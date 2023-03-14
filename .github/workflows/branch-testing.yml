@@ -20,12 +20,12 @@ jobs:
     - name: Bash script
       run: |
         .bin/build_2023.sh $GITHUB_REF_NAME $GITHUB_SHA
-        ENV:
-          $environment"
+        env:
+          ENVIRONMENT: $environment"
 
     - name: Display output variable using Job Summary
       run: |
         echo "### Outputs :rocket:" >> $GITHUB_STEP_SUMMARY
         echo "Branch: $GITHUB_REF_NAME" >> $GITHUB_STEP_SUMMARY
         echo "Commit ID: ${GITHUB_SHA:0:7}" >> $GITHUB_STEP_SUMMARY
-        echo "Environment: $environment" >> $GITHUB_STEP_SUMMARY
+        echo "Environment: $ENVIRONMENT" >> $GITHUB_STEP_SUMMARY
