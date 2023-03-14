@@ -19,4 +19,6 @@ jobs:
 
     - name: Display output variable in Workflow Summary
       run: |
-        echo ${{ env.MY_VAR }} >> $HOME/results.txt
+        echo ${{ env.MY_VAR }} >> $GITHUB_WORKSPACE/results.txt
+        echo "Output file contents:"
+        cat $GITHUB_WORKSPACE/results.txt
