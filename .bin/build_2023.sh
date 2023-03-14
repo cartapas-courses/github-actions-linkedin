@@ -41,4 +41,6 @@ function main() {
 
 }
 
+echo $environment
+
 main "$@"
