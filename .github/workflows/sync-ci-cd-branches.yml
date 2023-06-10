@@ -22,7 +22,7 @@ jobs:
         id: pull
         uses: tretuna/sync-branches@1.4.0
         with:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.WORKFLOW_TOKEN}}
           FROM_BRANCH: "main"
           TO_BRANCH: "develop"
           PULL_REQUEST_TITLE: "sync: {FROM_BRANCH} to {TO_BRANCH} - commit: ${{ github.ref }}"
