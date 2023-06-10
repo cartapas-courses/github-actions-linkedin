@@ -30,7 +30,7 @@ jobs:
           PULL_REQUEST_IS_DRAFT: "false"
           CONTENT_COMPARISON: "true"
           # Not present in version equal or minor than 1.3.0
-          #REVIEWERS: '["cartapas"]'
+          REVIEWERS: '["cartapas"]'
           #TEAM_REVIEWERS: []
         
       #- name: Output PR data
