@@ -25,10 +25,10 @@ jobs:
           GITHUB_TOKEN: ${{secrets.WORKFLOW_TOKEN}}
           FROM_BRANCH: "master"
           TO_BRANCH: "develop"
-          #PULL_REQUEST_TITLE: "sync: {FROM_BRANCH} to {TO_BRANCH} - commit: ${{ github.ref }}"
-          #PULL_REQUEST_BODY: "sync-branches: New code has just landed in {FROM_BRANCH} so let's bring {TO_BRANCH} up to speed!"
-          #PULL_REQUEST_IS_DRAFT: "false"
-          #CONTENT_COMPARISON: "true"
+          PULL_REQUEST_TITLE: "sync: {FROM_BRANCH} to {TO_BRANCH} - commit: ${{ github.ref }}"
+          PULL_REQUEST_BODY: "sync-branches: New code has just landed in {FROM_BRANCH} so let's bring {TO_BRANCH} up to speed!"
+          PULL_REQUEST_IS_DRAFT: "false"
+          CONTENT_COMPARISON: "true"
           # Not present in version equal or minor than 1.3.0
           #REVIEWERS: '["cartapas"]'
           #TEAM_REVIEWERS: []
