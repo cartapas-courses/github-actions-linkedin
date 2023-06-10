@@ -1,0 +1,10 @@
+{
+   "env_vars":{
+      "AUTH0":"https://auth0.com",
+      "CONTENTFUL":"https://contentful.com"
+   },
+   "env_test_vars":{
+      "AUTH0":"https://bg.auth0.com:8443",
+      "CONTENTFUL":"https://bg.contentful.com:8443"
+   }
+}
